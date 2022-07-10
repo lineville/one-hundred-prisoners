@@ -55,7 +55,7 @@ fn apply_strategy(
             let mut opened_boxes = 0;
             let mut box_contents = strategy(&boxes, p, None);
 
-            while box_contents != p && opened_boxes <= prisoners / 2 {
+            while box_contents != p && opened_boxes < prisoners / 2 {
                 opened_boxes += 1;
                 box_contents = strategy(&boxes, p, Some(box_contents));
             }
@@ -77,7 +77,7 @@ fn loop_strategy(boxes: &Vec<usize>, prisoner: usize, previous: Option<usize>) -
     }
 }
 
-// Naive strategy: Pick 50 boxes at random
+// Naive strategy: Pick any box at random
 fn _naive_strategy(boxes: &Vec<usize>, _prisoner: usize, _previous: Option<usize>) -> usize {
     boxes[rand::thread_rng().gen_range(0..boxes.len())]
 }
